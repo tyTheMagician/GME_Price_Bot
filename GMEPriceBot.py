@@ -40,7 +40,6 @@ day = {
     5: 'Saturday',
     6: 'Sunday'
     }
-fri = '2021-09-03'
 
 # AlphaVantage query - edit the FUNCTION to change the query (time series, symbol, interval)
 FUNCTION = 'TIME_SERIES_DAILY&symbol=GME&interval=5min&apikey='
@@ -48,7 +47,7 @@ url = 'https://www.alphavantage.co/query?function='+ FUNCTION + AV_API_KEY
 r = requests.get(url)
 data = r.json()
 recentPriceData = data.get('Time Series (Daily)')
-now = recentPriceData.get(fri)
+now = recentPriceData.get(day)
 
 # Print statements and logic for the Tweets
 if day[wD] == 'Saturday' or 'Sunday':
