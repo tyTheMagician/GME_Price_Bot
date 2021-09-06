@@ -1,4 +1,4 @@
-# authors - @tyTheMagician +
+# authors - @magician_ty +
 import csv
 import requests
 from datetime import date
