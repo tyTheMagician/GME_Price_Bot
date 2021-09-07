@@ -47,7 +47,7 @@ url = 'https://www.alphavantage.co/query?function='+ FUNCTION + AV_API_KEY
 r = requests.get(url)
 data = r.json()
 recentPriceData = data.get('Time Series (Daily)')
-now = recentPriceData.get(day)
+now = recentPriceData.get(today)
 
 # Print statements and logic for the Tweets
 if day[wD] == 'Saturday' or 'Sunday':
