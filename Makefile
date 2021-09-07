@@ -5,6 +5,10 @@ SHELL := /bin/bash
 run: venv
 	./venv/bin/python GMEPriceBot.py
 
+.PHONY: german
+german: venv
+	./venv/bin/python german_exchanges.py
+
 venv: venv/touchfile
 
 venv/touchfile: requirements.txt
