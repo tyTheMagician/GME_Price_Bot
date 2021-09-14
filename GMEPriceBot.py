@@ -1,4 +1,5 @@
-# authors - @magician_ty +
+# authors - @magician_ty
+# GME Price Bot - gathering data from all markets where GME is traded
 import csv
 import requests
 from datetime import date
@@ -76,6 +77,3 @@ else:
 
     # Tweet
     Tweet = api.update_status('test')
-
-
-    
