@@ -6,7 +6,6 @@ import os
 import time
 import pandas as pd
 import tweepy
-import logging
 from datetime import datetime, date, timedelta
 from Twitter_API_Info import Consumer_Key, Consumer_Secret, Access_Token, Access_Secret
 from twelvedata import TDClient
