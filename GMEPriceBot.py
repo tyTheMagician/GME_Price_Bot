@@ -89,6 +89,7 @@ while True:
     marketOpen = today930
     marketClose = today16
 
+
     # weekend
     if wD > 4:
         print('[gme bot: weekend | no data | sleeping for ~24 hrs...]')
@@ -102,7 +103,7 @@ while True:
         time.sleep(secsLeft)
 
     # if market closed, wait till end of day
-    elif marketClose <= now:
+    elif today1630 <= now:
         timeLeft = todayEnd - now
         secsLeft = timeLeft.total_seconds()
         print('[gme bot: market closed | waiting ' + str(secsLeft / 120) + ' est. hours till EOD')
@@ -378,17 +379,16 @@ while True:
         #################
 
         if today16 <= now:
-            if now < today1630:
-                try:
-                    # 4:00 update
-                    time.sleep(60)
-                    update16 = '$GME: $' + getStockData(today1555)[2] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
-                    # 4:00 tweet
-                    print('[gme bot: 4pm ]', update16)
-                    tweet(update16)
-                    print('success: waiting {} seconds'.format(timeLeft(todayEnd, now)))
-                    time.sleep(timeLeft(todayEnd, now))
+            try:
+                # 4:00 update
+                time.sleep(60)
+                update16 = '$GME: $' + getStockData(today1555)[2] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
+                # 4:00 tweet
+                print('[gme bot: 4pm ]', update16)
+                tweet(update16)
+                print('success: waiting {} seconds'.format(timeLeft(todayEnd, now)))
+                time.sleep(timeLeft(todayEnd, now))
 
-                except Exception as e:
-                    print('[gme bot: 4pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(120)
+            except Exception as e:
+                print('[gme bot: 4pm tweet | data is likely not ready. waiting a minute...]')
+                time.sleep(120)
