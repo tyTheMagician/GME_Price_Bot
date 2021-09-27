@@ -13,9 +13,11 @@ from twelvedata import TDClient
 from TwelveData_API import US_STOCK_API
 
 
-print('###################')
-print("## GME Price Bot ##")
-print('###################')
+print("""
+    ###################
+    ## GME Price Bot ##
+    ###################
+    """)
 
 # Tweet Tweet
 def tweet(message):
@@ -30,17 +32,18 @@ def getStockData(time):
     td = TDClient(apikey=US_STOCK_API)
     ts = td.time_series(
         symbol="GME",
-        interval="30min",
+        interval="5min",
         start_date=time,
         outputsize=3000,
         order='ASC'
     ).as_pandas()
 
     price = '{:.2f}'.format(ts.iloc[0, 0])
+    priceClose = '{:.2f}'.format(ts.iloc[0, 3])
     volumeTraded = ts['volume'].sum()
     volume = '{:,}'.format(volumeTraded)
 
-    return price, volume
+    return price, volume, price close
 
 
 def timeLeft(target, now):
@@ -67,17 +70,6 @@ while True:
         }
 
     # Time-slot variables
-    today4 = pd.to_datetime(str(today) + ' 04:00:00')
-    today430 = pd.to_datetime(str(today) + ' 04:30:00')
-    today5 = pd.to_datetime(str(today) + ' 05:00:00')
-    today530 = pd.to_datetime(str(today) + ' 05:30:00')
-    today6 = pd.to_datetime(str(today) + ' 06:00:00')
-    today630 = pd.to_datetime(str(today) + ' 06:30:00')
-    today7 = pd.to_datetime(str(today) + ' 07:00:00')
-    today730 = pd.to_datetime(str(today) + ' 07:30:00')
-    today8 = pd.to_datetime(str(today) + ' 08:00:00')
-    today830 = pd.to_datetime(str(today) + ' 08:30:00')
-    today9 = pd.to_datetime(str(today) + ' 09:00:00')
     today930 = pd.to_datetime(str(today) + ' 09:30:00')
     today10 = pd.to_datetime(str(today) + ' 10:00:00')
     today1030 = pd.to_datetime(str(today) + ' 10:30:00')
@@ -91,258 +83,32 @@ while True:
     today1430 = pd.to_datetime(str(today) + ' 14:30:00')
     today15 = pd.to_datetime(str(today) + ' 15:00:00')
     today1530 = pd.to_datetime(str(today) + ' 15:30:00')
+    today1555 = pd.to_datetime(str(today) + ' 15:55:00')
     today16 = pd.to_datetime(str(today) + ' 16:00:00')
     today1630 = pd.to_datetime(str(today) + ' 16:30:00')
-    today17 = pd.to_datetime(str(today) + ' 17:00:00')
-    today1730 = pd.to_datetime(str(today) + ' 17:30:00')
-    today18 = pd.to_datetime(str(today) + ' 18:00:00')
-    today1830 = pd.to_datetime(str(today) + ' 18:30:00')
-    today19 = pd.to_datetime(str(today) + ' 19:00:00')
-    today1930 = pd.to_datetime(str(today) + ' 19:30:00')
-    today20 = pd.to_datetime(str(today) + ' 20:00:00')
-    preMarket = today4
+    todayEnd = pd.to_datetime(str(today) + ' 23:59:59')
     marketOpen = today930
-    afterMarket = today16
-    marketClose = today20
+    marketClose = today16
 
     # weekend
     if wD > 4:
         print('[gme bot: weekend | no data | sleeping for ~24 hrs...]')
         time.sleep(15727)
 
-    # if market is awaiting pre-market, wait
-    elif preMarket > now:
+    # if market is awaiting market open, wait
+    elif marketOpen > now:
         timeLeft = marketOpen - now
         secsLeft = timeLeft.total_seconds()
-        print('[gme bot: waiting ' + str(secsLeft * 60) + ' min. for pre-market open...]')
-        time.sleep(timeLeft(preMarket, now))
+        print('[gme bot: waiting ' + str(secsLeft * 60) + ' min. for market open...]')
+        time.sleep(timeLeft(marketOpen, now))
 
-    # if market closed, wait for 17.5 hrs till pre-market
+    # if market closed, wait till end of day
     elif marketClose <= now:
-        print('[gme bot: market closed - entering post-market | no data for Ver. 1 | sleeping till morning (17.5 hrs)...]')
-        time.sleep(21600)
+        print('[gme bot: market closed | sleeping till morning...]')
+        time.sleep(timeLeft(todayEnd, now))
+        time.sleep(9)
 
     else:
-        ################
-        ## 4:00 AM ET ##
-        ################
-
-        if today4 <= now:
-            if now < today430:
-                try:
-                    # 4:00 update
-                    update4 = '$GME:' + '\n' + 'Price: $' + getStockData(today4)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 4:00 tweet
-                    print('[gme bot: 4am ]', update4)
-                    # tweet(update430)
-                    time.sleep(timeLeft(today430, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 4am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 4:30 AM ET ##
-        ################
-
-        if today430 <= now:
-            if now < today5:
-                try:
-                    # 4:30 update
-                    update430 = '$GME:' + '\n' + 'Price: $' + getStockData(today430)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 4:30 tweet
-                    print('[gme bot: 4:30am ]', update430)
-                    # tweet(update430)
-                    time.sleep(timeLeft(today5, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 4:30am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 5:00 AM ET ##
-        ################
-
-        if today5 <= now:
-            if now < today530:
-                try:
-                    # 5:00 update
-                    update5 = '$GME:' + '\n' + 'Price: $' + getStockData(today5)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 5:00 tweet
-                    print('[gme bot: 5am ]', update5)
-                    # tweet(update5)
-                    time.sleep(timeLeft(today530, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 5am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 5:30 AM ET ##
-        ################
-
-        if today530 <= now:
-            if now < today6:
-                try:
-                    # 5:30 update
-                    update530 = '$GME:' + '\n' + 'Price: $' + getStockData(today530)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 5:30 tweet
-                    print('[gme bot: 5:30am ]', update530)
-                    # tweet(update530)
-                    time.sleep(timeLeft(today6, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 5:30am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 6:00 AM ET ##
-        ################
-
-        if today6 <= now:
-            if now < today630:
-                try:
-                    # 6:00 update
-                    update6 = '$GME:' + '\n' + 'Price: $' + getStockData(today6)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 6:00 tweet
-                    print('[gme bot: 6am ]', update6)
-                    # tweet(update6)
-                    time.sleep(timeLeft(today630, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 6am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 6:30 AM ET ##
-        ################
-
-        if today630 <= now:
-            if now < today7:
-                try:
-                    # 6:30 update
-                    update630 = '$GME:' + '\n' + 'Price: $' + getStockData(today630)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 6:30 tweet
-                    print('[gme bot: 6:30am ]', update630)
-                    # tweet(update630)
-                    time.sleep(timeLeft(today7, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 6:30am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 7:00 AM ET ##
-        ################
-
-        if today7 <= now:
-            if now < today730:
-                try:
-                    # 7:00 update
-                    update7 = '$GME:' + '\n' + 'Price: $' + getStockData(today7)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 7:00 tweet
-                    print('[gme bot: 7am ]', update7)
-                    # tweet(update7)
-                    time.sleep(timeLeft(today730, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 7am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 7:30 AM ET ##
-        ################
-
-        if today730 <= now:
-            if now < today8:
-                try:
-                    # 7:30 update
-                    update730 = '$GME:' + '\n' + 'Price: $' + getStockData(today730)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 7:30 tweet
-                    print('[gme bot: 7:30am ]', update730)
-                    # tweet(update730)
-                    time.sleep(timeLeft(today8, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 7:30am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 8:00 AM ET ##
-        ################
-
-        if today8 <= now:
-            if now < today830:
-                try:
-                    # 8:00 update
-                    update8 = '$GME:' + '\n' + 'Price: $' + getStockData(today8)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 8:00 tweet
-                    print('[gme bot: 8am ]', update8)
-                    # tweet(update8)
-                    time.sleep(timeLeft(today830, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 8am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 8:30 AM ET ##
-        ################
-
-        if today830 <= now:
-            if now < today9:
-                try:
-                    # 8:30 update
-                    update830 = '$GME:' + '\n' + 'Price: $' + getStockData(today830)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 8:30 tweet
-                    print('[gme bot: 8:30am ]', update830)
-                    # tweet(update830)
-                    time.sleep(timeLeft(today9, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 8:30am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        ################
-        ## 9:00 AM ET ##
-        ################
-
-        if today9 <= now:
-            if now < today930:
-                try:
-                    # 9:00 update
-                    update9 = '$GME:' + '\n' + 'Price: $' + getStockData(today9)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 9:00 tweet
-                    print('[gme bot: 9am ]', update9)
-                    # tweet(update9)
-                    time.sleep(timeLeft(today930, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 9am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
         ################
         ## 9:30 AM ET ##
         ################
@@ -358,9 +124,8 @@ while True:
                     time.sleep(timeLeft(today10, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 9:30am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -378,9 +143,8 @@ while True:
                     time.sleep(timeLeft(today1030, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 10am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -398,9 +162,8 @@ while True:
                     time.sleep(timeLeft(today11, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 10:30am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -418,9 +181,8 @@ while True:
                     time.sleep(timeLeft(today1130, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 11am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -438,9 +200,8 @@ while True:
                     time.sleep(timeLeft(today12, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 11:30am tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -458,9 +219,8 @@ while True:
                     time.sleep(timeLeft(today1230, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 12pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -478,9 +238,8 @@ while True:
                     time.sleep(timeLeft(today13, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 12:30pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -498,9 +257,8 @@ while True:
                     time.sleep(timeLeft(today1330, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 1pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -518,9 +276,8 @@ while True:
                     time.sleep(timeLeft(today14, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 1:30pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -538,9 +295,8 @@ while True:
                     time.sleep(timeLeft(today1430, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 2pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -558,9 +314,8 @@ while True:
                     time.sleep(timeLeft(today15, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 2:30pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -578,9 +333,8 @@ while True:
                     time.sleep(timeLeft(today1530, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 3pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -595,12 +349,12 @@ while True:
                     # 3:30 tweet
                     print('[gme bot: 3:30pm ]', update1530)
                     # tweet(update1530)
+                    print('success: waiting {} seconds'.format(timeLeft(today16, now)))
                     time.sleep(timeLeft(today16, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 3:30pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
+                    time.sleep(120)
 
 
         #################
@@ -611,175 +365,13 @@ while True:
             if now < today1630:
                 try:
                     # 4:00 update
-                    update16 = '$GME:' + '\n' + 'Price: $' + getStockData(today16)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update16 = '$GME:' + '\n' + 'Price: $' + getStockData(today1555)[2] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
                     # 4:00 tweet
                     print('[gme bot: 4pm ]', update16)
                     # tweet(update16)
-                    time.sleep(timeLeft(today1630, now))
+                    print('success: waiting {} seconds'.format(timeLeft(today1630, now)))
+                    time.sleep(timeLeft(todayEnd, now))
 
                 except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
                     print('[gme bot: 4pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        #################
-        ## 4:30 PM ET ##
-        #################
-
-        if today1630 <= now:
-            if now < today17:
-                try:
-                    # 4:30 update
-                    update1630 = '$GME:' + '\n' + 'Price: $' + getStockData(today1630)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 4:30 tweet
-                    print('[gme bot: 4:30pm ]', update1630)
-                    # tweet(update1630)
-                    time.sleep(timeLeft(today17, now))
-
-                except Exception as e:
-                    logging.error(str(e.__class__.__name__) + ": " + str(e), e)
-                    print('[gme bot: 4:30pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        #################
-        ## 5:00 PM ET ##
-        #################
-
-        if today17 <= now:
-            if now < today1730:
-                try:
-                    # 5:00 update
-                    update17 = '$GME:' + '\n' + 'Price: $' + getStockData(today17)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 5:00 tweet
-                    print('[gme bot: 5pm ]', update17)
-                    # tweet(update17)
-                    time.sleep(timeLeft(today1730, now))
-
-                except Exception as e:
-                    print('[gme bot: 5pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        #################
-        ## 5:30 PM ET ##
-        #################
-
-        if today1730 <= now:
-            if now < today18:
-                try:
-                    # 5:30 update
-                    update1730 = '$GME:' + '\n' + 'Price: $' + getStockData(today1730)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 5:30 tweet
-                    print('[gme bot: 5:30pm ]', update1730)
-                    # tweet(update1730)
-                    time.sleep(timeLeft(today18, now))
-
-                except Exception as e:
-                    print('[gme bot: 5:30pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        #################
-        ## 6:00 PM ET ##
-        #################
-
-        if today18 <= now:
-            if now < today1830:
-                try:
-                    # 6:00 update
-                    update18 = '$GME:' + '\n' + 'Price: $' + getStockData(today18)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 6:00 tweet
-                    print('[gme bot: 6pm ]', update18)
-                    # tweet(update18)
-                    time.sleep(timeLeft(today1830, now))
-
-                except Exception as e:
-                    print('[gme bot: 6pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        #################
-        ## 6:30 PM ET ##
-        #################
-
-        if today1830 <= now:
-            if now < today19:
-                try:
-                    # 6:30 update
-                    update18 = '$GME:' + '\n' + 'Price: $' + getStockData(today1830)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 6:30 tweet
-                    print('[gme bot: 6:30pm ]', update1830)
-                    # tweet(update1830)
-                    time.sleep(timeLeft(today19, now))
-
-                except Exception as e:
-                    print('[gme bot: 6:30pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(30)
-
-
-        #################
-        ## 7:00 PM ET ##
-        #################
-
-        if today19 <= now:
-            if now < today1930:
-                try:
-                    # 7:00 update
-                    update18 = '$GME:' + '\n' + 'Price: $' + getStockData(today19)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 7:00 tweet
-                    print('[gme bot: 7pm ]', update19)
-                    # tweet(update19)
-                    time.sleep(timeLeft(today1930, now))
-
-                except Exception as e:
-                    print('[gme bot: 7pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(30)
-
-
-        #################
-        ## 7:30 PM ET ##
-        #################
-
-        if today1930 <= now:
-            if now < today20:
-                try:
-                    # 7:30 update
-                    update18 = '$GME:' + '\n' + 'Price: $' + getStockData(today1930)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                    # 7:30 tweet
-                    print('[gme bot: 7:30pm ]', update1930)
-                    # tweet(update1930)
-                    time.sleep(timeLeft(today20, now))
-
-                except Exception as e:
-                    print('[gme bot: 7:30pm tweet | data is likely not ready. waiting a minute...]')
-                    time.sleep(60)
-
-
-        #################
-        ## 8:00 PM ET ##
-        #################
-
-        if today20 <= now:
-            try:
-                # 8:00 update
-                update18 = '$GME:' + '\n' + 'Price: $' + getStockData(today20)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
-                # 8:00 tweet
-                print('[gme bot: 8pm ]', update20)
-                # tweet(update20)
-                time.sleep(3600)
-
-            except Exception as e:
-                print('[gme bot: 8pm tweet | data is likely not ready. waiting a minute...]')
-                time.sleep(60)
-
-
-
-        #
-        #
-        # # #################
-        # # # German Market #
-        # # #################
-        #
-        # # 2:00 AM ET - Opening bell
+                    time.sleep(120)
