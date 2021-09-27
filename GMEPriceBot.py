@@ -118,10 +118,10 @@ while True:
             if now < today10:
                 try:
                     # 9:30 update
-                    update930 = '$GME:' + '\n' + 'Today is ' + day[wD] + '\n' + 'Opening Bell - 9:30 AM ET' + '\n' + 'Price: $' + getStockData(today4)[0] + '\n' + 'Volume: ' + getStockData(today930)[1] + ' [shares traded since open]'
+                    update930 = '$GME: $' + getStockData(today930)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 9:30 tweet
-                    print('[gme bot: 9:30am ]', update930)
-                    # tweet(update930)
+                    print('[gme bot: 9:30am]', update930)
+                    tweet(update930)
                     time.sleep(timeLeft(today10, now))
 
                 except Exception as e:
@@ -137,10 +137,10 @@ while True:
             if now < today1030:
                 try:
                     # 10:00 update
-                    update10 = '$GME:' + '\n' + 'Price: $' + getStockData(today10)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update10 = '$GME: $' + getStockData(today10)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 10:00 tweet
-                    print('[gme bot: 10am ]', update10)
-                    # tweet(update10)
+                    print('[gme bot: 10am]', update10)
+                    tweet(update10)
                     time.sleep(timeLeft(today1030, now))
 
                 except Exception as e:
@@ -156,9 +156,9 @@ while True:
             if now < today11:
                 try:
                     # 10:30 update
-                    update1030 = '$GME:' + '\n' + 'Price: $' + getStockData(today1030)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update1030 = '$GME: $' + getStockData(today1030)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 10:30 tweet
-                    print('[gme bot: 10:30am ]', update1030)
+                    print('[gme bot: 10:30am]', update1030)
                     # tweet(update1030)
                     time.sleep(timeLeft(today11, now))
 
@@ -175,9 +175,9 @@ while True:
             if now < today1130:
                 try:
                     # 11:00 update
-                    update11 = '$GME:' + '\n' + 'Price: $' + getStockData(today11)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update11 = '$GME: $'+ getStockData(today11)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 11:00 tweet
-                    print('[gme bot: 11am ]', update11)
+                    print('[gme bot: 11am]', update11)
                     # tweet(update11)
                     time.sleep(timeLeft(today1130, now))
 
@@ -194,9 +194,9 @@ while True:
             if now < today12:
                 try:
                     # 11:30 update
-                    update11 = '$GME:' + '\n' + 'Price: $' + getStockData(today1130)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update11 = '$GME: $' + getStockData(today1130)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 11:30 tweet
-                    print('[gme bot: 11:30am ]', update1130)
+                    print('[gme bot: 11:30am]', update1130)
                     # tweet(update1130)
                     time.sleep(timeLeft(today12, now))
 
@@ -213,9 +213,9 @@ while True:
             if now < today1230:
                 try:
                     # 12:00 update
-                    update12 = '$GME:' + '\n' + 'Price: $' + getStockData(today12)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update12 = '$GME: $' + getStockData(today12)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 12:00 tweet
-                    print('[gme bot: 12pm ]', update12)
+                    print('[gme bot: 12pm]', update12)
                     # tweet(update12)
                     time.sleep(timeLeft(today1230, now))
 
@@ -232,9 +232,9 @@ while True:
             if now < today13:
                 try:
                     # 12:30 update
-                    update1230 = '$GME:' + '\n' + 'Price: $' + getStockData(today1230)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update1230 = '$GME: $' + getStockData(today1230)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 12:30 tweet
-                    print('[gme bot: 12:30pm ]', update1230)
+                    print('[gme bot: 12:30pm]', update1230)
                     # tweet(update1230)
                     time.sleep(timeLeft(today13, now))
 
@@ -251,9 +251,9 @@ while True:
             if now < today1330:
                 try:
                     # 1:00 update
-                    update13 = '$GME:' + '\n' + 'Price: $' + getStockData(today13)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update13 = '$GME: $' + getStockData(today13)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 1:00 tweet
-                    print('[gme bot: 1pm ]', update13)
+                    print('[gme bot: 1pm]', update13)
                     # tweet(update13)
                     time.sleep(timeLeft(today1330, now))
 
@@ -270,9 +270,9 @@ while True:
             if now < today14:
                 try:
                     # 1:30 update
-                    update1330 = '$GME:' + '\n' + 'Price: $' + getStockData(today1330)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update1330 = '$GME: $' + getStockData(today1330)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 1:30 tweet
-                    print('[gme bot: 1:30pm ]', update1330)
+                    print('[gme bot: 1:30pm]', update1330)
                     # tweet(update1330)
                     time.sleep(timeLeft(today14, now))
 
@@ -289,9 +289,9 @@ while True:
             if now < today1430:
                 try:
                     # 2:00 update
-                    update14 = '$GME:' + '\n' + 'Price: $' + getStockData(today14)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update14 = '$GME: $' + getStockData(today14)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 2:00 tweet
-                    print('[gme bot: 2pm ]', update14)
+                    print('[gme bot: 2pm]', update14)
                     # tweet(update14)
                     time.sleep(timeLeft(today1430, now))
 
@@ -308,9 +308,9 @@ while True:
             if now < today15:
                 try:
                     # 2:30 update
-                    update1430 = '$GME:' + '\n' + 'Price: $' + getStockData(today1430)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update1430 = '$GME: $' + getStockData(today1430)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 2:30 tweet
-                    print('[gme bot: 2:30pm ]', update1430)
+                    print('[gme bot: 2:30pm]', update1430)
                     # tweet(update1430)
                     time.sleep(timeLeft(today15, now))
 
@@ -327,9 +327,9 @@ while True:
             if now < today1530:
                 try:
                     # 3:00 update
-                    update15 = '$GME:' + '\n' + 'Power Hour!' + 'Price: $' + getStockData(today15)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update15 = '$GME: $' + getStockData(today15)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 3:00 tweet
-                    print('[gme bot: 3pm ]', update15)
+                    print('[gme bot: 3pm]', update15)
                     # tweet(update15)
                     time.sleep(timeLeft(today1530, now))
 
@@ -346,9 +346,9 @@ while True:
             if now < today16:
                 try:
                     # 3:30 update
-                    update1530 = '$GME:' + '\n' + 'Price: $' + getStockData(today1530)[0] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update1530 = '$GME: $' + getStockData(today1530)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 3:30 tweet
-                    print('[gme bot: 3:30pm ]', update1530)
+                    print('[gme bot: 3:30pm]', update1530)
                     # tweet(update1530)
                     print('success: waiting {} seconds'.format(timeLeft(today16, now)))
                     time.sleep(timeLeft(today16, now))
@@ -366,7 +366,7 @@ while True:
             if now < today1630:
                 try:
                     # 4:00 update
-                    update16 = '$GME:' + '\n' + 'Price: $' + getStockData(today1555)[2] + '\n' + 'Volume: ' + getStockData(today4)[1] + ' [shares traded since open]'
+                    update16 = '$GME: $' + getStockData(today1555)[2] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 4:00 tweet
                     print('[gme bot: 4pm ]', update16)
                     # tweet(update16)
