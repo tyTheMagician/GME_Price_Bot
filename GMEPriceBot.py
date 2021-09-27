@@ -43,7 +43,7 @@ def getStockData(time):
     volumeTraded = ts['volume'].sum()
     volume = '{:,}'.format(volumeTraded)
 
-    return price, volume, price close
+    return price, volume, priceClose
 
 
 def timeLeft(target, now):
@@ -99,13 +99,15 @@ while True:
     elif marketOpen > now:
         timeLeft = marketOpen - now
         secsLeft = timeLeft.total_seconds()
-        print('[gme bot: waiting ' + str(secsLeft * 60) + ' min. for market open...]')
-        time.sleep(timeLeft(marketOpen, now))
+        print('[gme bot: waiting ' + str(secsLeft / 60) + ' minutes for market open...]')
+        time.sleep(secsLeft)
 
     # if market closed, wait till end of day
     elif marketClose <= now:
-        print('[gme bot: market closed | sleeping till morning...]')
-        time.sleep(timeLeft(todayEnd, now))
+        timeLeft = todayEnd - now
+        secsLeft = timeLeft.total_seconds()
+        print('[gme bot: market closed | waiting ' + str(secsLeft / 60) + ' minutes for EOD')
+        time.sleep(secsLeft)
         time.sleep(9)
 
     else:
