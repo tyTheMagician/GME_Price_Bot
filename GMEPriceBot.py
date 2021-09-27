@@ -194,7 +194,7 @@ while True:
             if now < today12:
                 try:
                     # 11:30 update
-                    update11 = '$GME: $' + getStockData(today1130)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
+                    update1130 = '$GME: $' + getStockData(today1130)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 11:30 tweet
                     print('[gme bot: 11:30am]', update1130)
                     tweet(update1130)
