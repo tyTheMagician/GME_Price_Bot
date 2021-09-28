@@ -3,7 +3,7 @@
 
 
 import os
-import time
+from time import time, localtime, strftime
 import pandas as pd
 import tweepy
 from datetime import datetime, date, timedelta
@@ -185,7 +185,7 @@ while True:
                     time.sleep(60)
                     update11 = '$GME: $'+ getStockData(today11)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 11:00 tweet
-                    print('[gme bot: 11am]', update11)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update11)
                     tweet(update11)
                     print('success')
                     time.sleep(timeLeft(today1130, now))
@@ -206,7 +206,7 @@ while True:
                     time.sleep(60)
                     update1130 = '$GME: $' + getStockData(today1130)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 11:30 tweet
-                    print('[gme bot: 11:30am]', update1130)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1130)
                     tweet(update1130)
                     print('success')
                     time.sleep(timeLeft(today12, now))
