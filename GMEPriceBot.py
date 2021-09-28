@@ -124,7 +124,7 @@ while True:
                     # 9:30 tweet
                     print('[gme bot: 9:30am]', update930)
                     tweet(update930)
-                    print('success: waiting {} seconds').format(timeLeft(today10, now))
+                    print('success')
                     time.sleep(timeLeft(today10, now))
 
                 except Exception as e:
@@ -145,7 +145,7 @@ while True:
                     # 10:00 tweet
                     print('[gme bot: 10am]', update10)
                     tweet(update10)
-                    print('success: waiting {} seconds').format(timeLeft(today1030, now))
+                    print('success')
                     time.sleep(timeLeft(today1030, now))
 
                 except Exception as e:
@@ -166,7 +166,7 @@ while True:
                     # 10:30 tweet
                     print('[gme bot: 10:30am]', update1030)
                     tweet(update1030)
-                    print('success: waiting {} seconds').format(timeLeft(today11, now))
+                    print('success')
                     time.sleep(timeLeft(today11, now))
 
                 except Exception as e:
@@ -187,7 +187,7 @@ while True:
                     # 11:00 tweet
                     print('[gme bot: 11am]', update11)
                     tweet(update11)
-                    print('success: waiting {} seconds').format(timeLeft(today1130, now))
+                    print('success')
                     time.sleep(timeLeft(today1130, now))
 
                 except Exception as e:
@@ -208,7 +208,7 @@ while True:
                     # 11:30 tweet
                     print('[gme bot: 11:30am]', update1130)
                     tweet(update1130)
-                    print('success: waiting {} seconds').format(timeLeft(today12, now))
+                    print('success')
                     time.sleep(timeLeft(today12, now))
 
                 except Exception as e:
@@ -229,7 +229,7 @@ while True:
                     # 12:00 tweet
                     print('[gme bot: 12pm]', update12)
                     tweet(update12)
-                    print('success: waiting {} seconds').format(timeLeft(today1230, now))
+                    print('success')
                     time.sleep(timeLeft(today1230, now))
 
                 except Exception as e:
@@ -250,7 +250,7 @@ while True:
                     # 12:30 tweet
                     print('[gme bot: 12:30pm]', update1230)
                     tweet(update1230)
-                    print('success: waiting {} seconds').format(timeLeft(today13, now))
+                    print('success')
                     time.sleep(timeLeft(today13, now))
 
                 except Exception as e:
@@ -271,7 +271,7 @@ while True:
                     # 1:00 tweet
                     print('[gme bot: 1pm]', update13)
                     tweet(update13)
-                    print('success: waiting {} seconds').format(timeLeft(today1330, now))
+                    print('success')
                     time.sleep(timeLeft(today1330, now))
 
                 except Exception as e:
@@ -292,7 +292,7 @@ while True:
                     # 1:30 tweet
                     print('[gme bot: 1:30pm]', update1330)
                     tweet(update1330)
-                    print('success: waiting {} seconds').format(timeLeft(today14, now))
+                    print('success')
                     time.sleep(timeLeft(today14, now))
 
                 except Exception as e:
@@ -313,7 +313,7 @@ while True:
                     # 2:00 tweet
                     print('[gme bot: 2pm]', update14)
                     tweet(update14)
-                    print('success: waiting {} seconds').format(timeLeft(today1430, now))
+                    print('success')
                     time.sleep(timeLeft(today1430, now))
 
                 except Exception as e:
@@ -334,7 +334,7 @@ while True:
                     # 2:30 tweet
                     print('[gme bot: 2:30pm]', update1430)
                     tweet(update1430)
-                    print('success: waiting {} seconds').format(timeLeft(today15, now))
+                    print('success')
                     time.sleep(timeLeft(today15, now))
 
                 except Exception as e:
@@ -355,7 +355,7 @@ while True:
                     # 3:00 tweet
                     print('[gme bot: 3pm]', update15)
                     tweet(update15)
-                    print('success: waiting {} seconds').format(timeLeft(today1530, now))
+                    print('success')
                     time.sleep(timeLeft(today1530, now))
 
                 except Exception as e:
@@ -376,7 +376,7 @@ while True:
                     # 3:30 tweet
                     print('[gme bot: 3:30pm]', update1530)
                     tweet(update1530)
-                    print('success: waiting {} seconds'.format(timeLeft(today16, now)))
+                    print('success')
                     time.sleep(timeLeft(today16, now))
                     time.sleep(30)
 
@@ -397,7 +397,7 @@ while True:
                 # 4:00 tweet
                 print('[gme bot: 4pm ]', update16)
                 tweet(update16)
-                print('success: waiting {} seconds'.format(timeLeft(todayEnd, now)))
+                print('success')
                 time.sleep(timeLeft(todayEnd, now))
 
             except Exception as e:
