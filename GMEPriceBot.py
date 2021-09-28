@@ -122,14 +122,13 @@ while True:
                     sleep(60)
                     update930 = '$GME: $' + getStockData(today930)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 9:30 tweet
-                    print('[gme bot: 9:30am]', update930)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update930)
                     tweet(update930)
                     print('success')
                     sleep(timeLeft(today10, now))
 
                 except Exception as e:
-                    print('[gme bot: 9:30am tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 9:30am data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -143,14 +142,13 @@ while True:
                     sleep(60)
                     update10 = '$GME: $' + getStockData(today10)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 10:00 tweet
-                    print('[gme bot: 10am]', update10)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update10)
                     tweet(update10)
                     print('success')
                     sleep(timeLeft(today1030, now))
 
                 except Exception as e:
-                    print('[gme bot: 10am tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 10am data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -164,14 +162,13 @@ while True:
                     sleep(60)
                     update1030 = '$GME: $' + getStockData(today1030)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 10:30 tweet
-                    print('[gme bot: 10:30am]', update1030)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1030)
                     tweet(update1030)
                     print('success')
                     sleep(timeLeft(today11, now))
 
                 except Exception as e:
-                    print('[gme bot: 10:30am tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 10:30am data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -191,8 +188,7 @@ while True:
                     sleep(timeLeft(today1130, now))
 
                 except Exception as e:
-                    print('[gme bot: 11am tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 11am data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -212,8 +208,7 @@ while True:
                     sleep(timeLeft(today12, now))
 
                 except Exception as e:
-                    print('[gme bot: 11:30am tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 11:30am data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -227,14 +222,13 @@ while True:
                     sleep(60)
                     update12 = '$GME: $' + getStockData(today12)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 12:00 tweet
-                    print('[gme bot: 12pm]', update12)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update12)
                     tweet(update12)
                     print('success')
                     sleep(timeLeft(today1230, now))
 
                 except Exception as e:
-                    print('[gme bot: 12pm tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 12pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -248,14 +242,13 @@ while True:
                     sleep(60)
                     update1230 = '$GME: $' + getStockData(today1230)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 12:30 tweet
-                    print('[gme bot: 12:30pm]', update1230)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1230)
                     tweet(update1230)
                     print('success')
                     sleep(timeLeft(today13, now))
 
                 except Exception as e:
-                    print('[gme bot: 12:30pm tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 12:30pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -269,14 +262,13 @@ while True:
                     sleep(60)
                     update13 = '$GME: $' + getStockData(today13)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 1:00 tweet
-                    print('[gme bot: 1pm]', update13)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update13)
                     tweet(update13)
                     print('success')
                     sleep(timeLeft(today1330, now))
 
                 except Exception as e:
-                    print('[gme bot: 1pm tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 1pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -290,14 +282,13 @@ while True:
                     sleep(60)
                     update1330 = '$GME: $' + getStockData(today1330)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 1:30 tweet
-                    print('[gme bot: 1:30pm]', update1330)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1330)
                     tweet(update1330)
                     print('success')
                     sleep(timeLeft(today14, now))
 
                 except Exception as e:
-                    print('[gme bot: 1:30pm tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 1:30pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -311,14 +302,13 @@ while True:
                     sleep(60)
                     update14 = '$GME: $' + getStockData(today14)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 2:00 tweet
-                    print('[gme bot: 2pm]', update14)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update14)
                     tweet(update14)
                     print('success')
                     sleep(timeLeft(today1430, now))
 
                 except Exception as e:
-                    print('[gme bot: 2pm tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 2:30pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -332,14 +322,13 @@ while True:
                     sleep(60)
                     update1430 = '$GME: $' + getStockData(today1430)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 2:30 tweet
-                    print('[gme bot: 2:30pm]', update1430)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1430)
                     tweet(update1430)
                     print('success')
                     sleep(timeLeft(today15, now))
 
                 except Exception as e:
-                    print('[gme bot: 2:30pm tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 2:30pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -353,14 +342,13 @@ while True:
                     sleep(60)
                     update15 = '$GME: $' + getStockData(today15)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 3:00 tweet
-                    print('[gme bot: 3pm]', update15)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update15)
                     tweet(update15)
                     print('success')
                     sleep(timeLeft(today1530, now))
 
                 except Exception as e:
-                    print('[gme bot: 3pm tweet | data is likely not ready. waiting a minute...]')
-                    sleep(60)
+                    print('[gme bot @ {} - the 3pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -374,15 +362,13 @@ while True:
                     sleep(60)
                     update1530 = '$GME: $' + getStockData(today1530)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 3:30 tweet
-                    print('[gme bot: 3:30pm]', update1530)
+                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1530)
                     tweet(update1530)
                     print('success')
                     sleep(timeLeft(today16, now))
-                    sleep(30)
 
                 except Exception as e:
-                    print('[gme bot: 3:30pm tweet | data is likely not ready. waiting a minute...]')
-                    sleep(30)
+                    print('[gme bot @ {} - the 3:30pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
 
 
         #################
@@ -395,11 +381,10 @@ while True:
                 sleep(60)
                 update16 = '$GME: $' + getStockData(today1555)[2] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                 # 4:00 tweet
-                print('[gme bot: 4pm ]', update16)
+                print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update16)
                 tweet(update16)
                 print('success')
                 sleep(timeLeft(todayEnd, now))
 
             except Exception as e:
-                print('[gme bot: 4pm tweet | data is likely not ready. waiting a minute...]')
-                sleep(120)
+                print('[gme bot @ {} - the 4pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
