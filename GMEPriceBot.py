@@ -125,6 +125,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update930)
                     tweet(update930)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today10, now))
 
                 except Exception as e:
@@ -145,6 +146,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update10)
                     tweet(update10)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today1030, now))
 
                 except Exception as e:
@@ -165,6 +167,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1030)
                     tweet(update1030)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today11, now))
 
                 except Exception as e:
@@ -185,6 +188,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update11)
                     tweet(update11)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today1130, now))
 
                 except Exception as e:
@@ -205,6 +209,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1130)
                     tweet(update1130)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today12, now))
 
                 except Exception as e:
@@ -225,6 +230,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update12)
                     tweet(update12)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today1230, now))
 
                 except Exception as e:
@@ -245,6 +251,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1230)
                     tweet(update1230)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today13, now))
 
                 except Exception as e:
@@ -265,6 +272,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update13)
                     tweet(update13)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today1330, now))
 
                 except Exception as e:
@@ -285,6 +293,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1330)
                     tweet(update1330)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today14, now))
 
                 except Exception as e:
@@ -305,6 +314,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update14)
                     tweet(update14)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today1430, now))
 
                 except Exception as e:
@@ -325,6 +335,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1430)
                     tweet(update1430)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today15, now))
 
                 except Exception as e:
@@ -345,6 +356,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update15)
                     tweet(update15)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today1530, now))
 
                 except Exception as e:
@@ -365,6 +377,7 @@ while True:
                     print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1530)
                     tweet(update1530)
                     print('success')
+                    sleep(30)
                     sleep(timeLeft(today16, now))
 
                 except Exception as e:
@@ -384,7 +397,7 @@ while True:
                 print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update16)
                 tweet(update16)
                 print('success')
-                sleep(timeLeft(todayEnd, now))
+                sleep(1861)
 
             except Exception as e:
                 print('[gme bot @ {} - the 4pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
