@@ -1,5 +1,6 @@
-# authors - @magician_ty
+# authors - @magician_ty - with mentoring from @half_dane, i also cherry picked his advice lol sorry bro, all love
 # GME Price Bot - Tweeting $GME price and volume, every 30 minutes in markets where $GME is traded
+# v1 - no pre/post/european data
 
 
 import os
@@ -92,8 +93,8 @@ while True:
 
     # weekend
     if wD > 4:
-        print('[gme bot @ {}: weekend | no data | sleeping for ~12 hrs...]'.format(strftime('%H:%M', localtime())))
-        sleep(43200)
+        print('[gme bot @ {}: weekend | no data]'.format(strftime('%H:%M', localtime())))
+        exit()
 
     # if market is awaiting market open, wait
     elif marketOpen > now:
@@ -394,7 +395,7 @@ while True:
                 print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update16)
                 tweet(update16)
                 print('success')
-                sleep(7200)
+                sleep(6000)
 
             except Exception as e:
                 print('[gme bot @ {} - the 4pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
