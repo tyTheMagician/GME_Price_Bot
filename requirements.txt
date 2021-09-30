@@ -1,2 +1,5 @@
+pandas
+tweepy
+twelvedata
 requests
 pyquery
