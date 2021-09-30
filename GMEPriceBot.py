@@ -44,7 +44,7 @@ def getStockData(time):
 
     return price, volume, priceClose
 
-
+# Timer setup
 def timeLeft(target, now):
     targetTime = target - now
     secondsLeft = targetTime.total_seconds()
@@ -92,8 +92,8 @@ while True:
 
     # weekend
     if wD > 4:
-        print('[gme bot: weekend | no data | sleeping for ~24 hrs...]')
-        sleep(15727)
+        print('[gme bot @ {}: weekend | no data | sleeping for ~12 hrs...]'.format(strftime('%H:%M', localtime())))
+        sleep(43200)
 
     # if market is awaiting market open, wait
     elif marketOpen > now:
@@ -106,9 +106,9 @@ while True:
     elif today1630 <= now:
         timeLeft = todayEnd - now
         secsLeft = timeLeft.total_seconds()
-        print('[gme bot: market closed | waiting ' + str(secsLeft / 120) + ' est. hours till EOD')
+        print('[gme bot: market closed | waiting ' + str(secsLeft / 3600) + ' est. hours till EOD')
         sleep(secsLeft)
-        sleep(9)
+        sleep(120)
 
     else:
         ################
@@ -122,7 +122,7 @@ while True:
                     sleep(60)
                     update930 = '$GME: $' + getStockData(today930)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 9:30 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update930)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update930)
                     tweet(update930)
                     print('success')
                     sleep(30)
@@ -143,7 +143,7 @@ while True:
                     sleep(60)
                     update10 = '$GME: $' + getStockData(today10)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 10:00 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update10)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update10)
                     tweet(update10)
                     print('success')
                     sleep(30)
@@ -164,7 +164,7 @@ while True:
                     sleep(60)
                     update1030 = '$GME: $' + getStockData(today1030)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 10:30 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1030)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update1030)
                     tweet(update1030)
                     print('success')
                     sleep(30)
@@ -185,7 +185,7 @@ while True:
                     sleep(60)
                     update11 = '$GME: $'+ getStockData(today11)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 11:00 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update11)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update11)
                     tweet(update11)
                     print('success')
                     sleep(30)
@@ -206,7 +206,7 @@ while True:
                     sleep(60)
                     update1130 = '$GME: $' + getStockData(today1130)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 11:30 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1130)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update1130)
                     tweet(update1130)
                     print('success')
                     sleep(30)
@@ -227,7 +227,7 @@ while True:
                     sleep(60)
                     update12 = '$GME: $' + getStockData(today12)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 12:00 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update12)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update12)
                     tweet(update12)
                     print('success')
                     sleep(30)
@@ -248,7 +248,7 @@ while True:
                     sleep(60)
                     update1230 = '$GME: $' + getStockData(today1230)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 12:30 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1230)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update1230)
                     tweet(update1230)
                     print('success')
                     sleep(30)
@@ -269,7 +269,7 @@ while True:
                     sleep(60)
                     update13 = '$GME: $' + getStockData(today13)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 1:00 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update13)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update13)
                     tweet(update13)
                     print('success')
                     sleep(30)
@@ -290,7 +290,7 @@ while True:
                     sleep(60)
                     update1330 = '$GME: $' + getStockData(today1330)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 1:30 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1330)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update1330)
                     tweet(update1330)
                     print('success')
                     sleep(30)
@@ -311,7 +311,7 @@ while True:
                     sleep(60)
                     update14 = '$GME: $' + getStockData(today14)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 2:00 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update14)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update14)
                     tweet(update14)
                     print('success')
                     sleep(30)
@@ -332,7 +332,7 @@ while True:
                     sleep(60)
                     update1430 = '$GME: $' + getStockData(today1430)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 2:30 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1430)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update1430)
                     tweet(update1430)
                     print('success')
                     sleep(30)
@@ -353,7 +353,7 @@ while True:
                     sleep(60)
                     update15 = '$GME: $' + getStockData(today15)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 3:00 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update15)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update15)
                     tweet(update15)
                     print('success')
                     sleep(30)
@@ -374,7 +374,7 @@ while True:
                     sleep(60)
                     update1530 = '$GME: $' + getStockData(today1530)[0] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                     # 3:30 tweet
-                    print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update1530)
+                    print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update1530)
                     tweet(update1530)
                     print('success')
                     sleep(30)
@@ -394,7 +394,7 @@ while True:
                 sleep(60)
                 update16 = '$GME: $' + getStockData(today1555)[2] + ' | Volume: ' + getStockData(marketOpen)[1] + ' [shares traded since open]'
                 # 4:00 tweet
-                print('[gme bot @ {}'.format(strftime('%H:%M', localtime())), update16)
+                print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update16)
                 tweet(update16)
                 print('success')
                 sleep(1861)
