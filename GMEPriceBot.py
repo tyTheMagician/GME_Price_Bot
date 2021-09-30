@@ -1,4 +1,4 @@
-# authors - @magician_ty - with mentoring from @half_dane, i also cherry picked his advice lol sorry bro, all love
+# authors - @magician_ty - with mentoring from @halfdane, i also cherry picked his advice lol sorry bro, all love
 # GME Price Bot - Tweeting $GME price and volume, every 30 minutes in markets where $GME is traded
 # v1 - no pre/post/european data
 
