@@ -104,7 +104,7 @@ while True:
 
     # if market closed, close program
     elif today1630 <= now:
-        print('[gme bot @ {} - market closed, closing program... ')
+        print('[gme bot @ {} - market closed, closing program... '.format(strftime('%H:%M', localtime())))
         exit()
 
     else:
