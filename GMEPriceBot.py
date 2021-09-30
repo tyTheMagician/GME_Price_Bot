@@ -102,13 +102,10 @@ while True:
         print('[gme bot: waiting ' + str(secsLeft / 60) + ' minutes for market open...]')
         sleep(secsLeft)
 
-    # if market closed, wait till end of day
+    # if market closed, close program
     elif today1630 <= now:
-        timeLeft = todayEnd - now
-        secsLeft = timeLeft.total_seconds()
-        print('[gme bot: market closed | waiting ' + str(secsLeft / 3600) + ' est. hours till EOD')
-        sleep(secsLeft)
-        sleep(120)
+        print('[gme bot @ {} - market closed, closing program... ')
+        exit()
 
     else:
         ################
@@ -397,7 +394,7 @@ while True:
                 print('[gme bot @ {}]'.format(strftime('%H:%M', localtime())), update16)
                 tweet(update16)
                 print('success')
-                sleep(1861)
+                sleep(7200)
 
             except Exception as e:
                 print('[gme bot @ {} - the 4pm data is likely not ready. waiting a minute...]'.format(strftime('%H:%M', localtime())))
